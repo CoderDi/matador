@@ -2,7 +2,22 @@ $(document).ready(function(){
 
   $(".js-getcall").click(function(){
     $(".popup-block").hide();
-    $("#popup-block").show();
+    $("#popup-getcall").show();
+    $(".popup").addClass("popup--show");
+  });
+  $(".js-getquest").click(function(){
+    $(".popup-block").hide();
+    $("#popup-getquest").show();
+    $(".popup").addClass("popup--show");
+  });
+  $(".js-zamer").click(function(){
+    $(".popup-block").hide();
+    $("#popup-zamer").show();
+    $(".popup").addClass("popup--show");
+  });
+  $(".js-address").click(function(){
+    $(".popup-block").hide();
+    $("#popup-address").show();
     $(".popup").addClass("popup--show");
   });
   $(".popup-close").click(function(){
@@ -13,10 +28,17 @@ $(document).ready(function(){
   });
 
   $(".butter").click(function(){
-    
+    $(this).toggleClass("active");
+    $(".menu").slideToggle(200);
   });
-  $(".menu-close").click(function(){
-    
+  $(".menu__item--drop_arrow").click(function(){
+    $(this).parents(".menu__item").find(".menu-drop").slideToggle(200);
+    $(this).toggleClass("active");
+  });
+
+  $(".article-label").click(function(){
+    $(".article-label").removeClass("active");
+    $(this).addClass("active");
   });
 
   
@@ -46,64 +68,40 @@ $(document).ready(function(){
   ymaps.ready(function () {
     if ($("#map").length != 0) {
       var myMap = new ymaps.Map('map', {
-          center: [56.6362, 47.85],
-          zoom: 13,
+          center: [56.630085, 47.834346],
+          zoom: 16,
           controls: []
         }),
-        myPlacemark = new ymaps.Placemark([56.635471, 47.837894], {
-          hintContent: 'улица Строителей, 19',
-          balloonContent: 'улица Строителей, 19'
+        myPlacemark = new ymaps.Placemark([56.630085, 47.834346], {
+          hintContent: 'ул. Прохорова, д. 39',
+          balloonContent: 'ул. Прохорова, д. 39'
         }, {
           iconLayout: 'default#image',
           iconImageHref: 'images/pin.png',
-          iconImageSize: [41, 41],
-          iconImageOffset: [-20, -41]
-        }),
-
-        myPlacemark2 = new ymaps.Placemark([56.637838, 47.868302], {
-          hintContent: 'улица Машиностроителей, 61',
-          balloonContent: 'улица Машиностроителей, 61'
-        }, {
-          iconLayout: 'default#image',
-          iconImageHref: 'images/pin2.png',
-          iconImageSize: [41, 41],
-          iconImageOffset: [-20, -41]
+          iconImageSize: [58, 58],
+          iconImageOffset: [-29, -58]
         });
 
         myMap.geoObjects.add(myPlacemark);
-        myMap.geoObjects.add(myPlacemark2);
-        myMap.behaviors.disable('scrollZoom');
     }
     
 
     if ($("#map-popup").length != 0) {
       var myMapPopup = new ymaps.Map('map-popup', {
-        center: [56.6362, 47.85],
-        zoom: 13,
+        center: [56.630085, 47.834346],
+        zoom: 16,
         controls: []
       }),
-      myPlacemarkPopup = new ymaps.Placemark([56.635471, 47.837894], {
-        hintContent: 'улица Строителей, 19',
-        balloonContent: 'улица Строителей, 19'
+      myPlacemarkPopup = new ymaps.Placemark([56.630085, 47.834346], {
+        hintContent: 'ул. Прохорова, д. 39',
+        balloonContent: 'ул. Прохорова, д. 39'
       }, {
         iconLayout: 'default#image',
         iconImageHref: 'images/pin.png',
-        iconImageSize: [41, 41],
-        iconImageOffset: [-20, -41]
-      }),
-
-      myPlacemarkPopup2 = new ymaps.Placemark([56.637838, 47.868302], {
-        hintContent: 'улица Машиностроителей, 61',
-        balloonContent: 'улица Машиностроителей, 61'
-      }, {
-        iconLayout: 'default#image',
-        iconImageHref: 'images/pin2.png',
-        iconImageSize: [41, 41],
-        iconImageOffset: [-20, -41]
+        iconImageSize: [28, 28],
+        iconImageOffset: [-14, -28]
       });
       myMapPopup.geoObjects.add(myPlacemarkPopup);
-      myMapPopup.geoObjects.add(myPlacemarkPopup2);
-      myMapPopup.behaviors.disable('scrollZoom');
     }
     
   });
